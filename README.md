@@ -13,7 +13,7 @@ to view it in the browser.
 > V.T. Konthasinghe | IT18145526 \
 > Kavindi Gunasinghe U.L.D. | IT18143614 \
 > Senura Diwantha K.S. | IT18154504 \
-> Wasana H.M.A.H | IT18137910 \
+> Wasana H.M.A.H | IT18137910 
 
 
  
