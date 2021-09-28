@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import googleLogo from '../asserts/google.jpg';
+import googleLogo from '../asserts/google-logo.png';
 import './home.css';
 
 export const clientID = process.env.REACT_APP_CLIENT_ID;
@@ -43,12 +43,12 @@ class Home extends Component {
             <div className="wrapper">
                 <div className="container">
                     <h1>Google OAuth 2.0 Application</h1>
-                    <h3>Login</h3>
+                    <h4>Upload files to Google Drive</h4>
                     <div className="upload-container">
                         <div className="border-container">
-                            <button className="btn btn-primary" onClick={this.login}>
+                            <button className="btn btn-info" onClick={this.login}>
                                 <img src={googleLogo} alt="google" width="30" height="30" />
-                                 Sign into Google to upload files
+                                &nbsp; Sign into Google
                             </button>
 
                         </div>
