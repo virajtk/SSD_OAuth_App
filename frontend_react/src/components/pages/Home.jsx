@@ -44,11 +44,23 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-               <div className="container">
-               <h1>OAuth 2.0 Application</h1>  
-               <hr />
-               <h4>View info in LinkedIn</h4>
+            <div className="wrapper">
+                <div className="container">
+                    <h1>OAuth 2.0 Application</h1>
+                    <hr />
+                    <h4>Upload files to Google Drive</h4>
+                    <div className="upload-container">
+                        <div className="border-container">
+                            <button className="btn btn-dark" onClick={this.login}>
+                                <img src={googleLogo} alt="google" width="30" height="30" />
+                                &nbsp; Sign into Google
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <hr />
+                    <h4>View info in LinkedIn</h4>
                     <div className="upload-container">
                         <div className="border-container">
                             <button className="btn btn-dark" onClick={this.loginLinkedIn}>
@@ -58,7 +70,9 @@ class Home extends Component {
 
                         </div>
                     </div>
-                </div> 
+
+
+                </div>
             </div>
         );
     }
