@@ -35,6 +35,56 @@ class Viewlinkedin extends Component {
         });
     }
 
+    componentDidMount() {
+        this.setUrlParamsCode();
+        setTimeout(() => {
+            if (this.state.state_l === stateEnv && this.state.code){
+                // console.log('State is correct and good to go!');
+                    // Simple POST request with a JSON body using fetch
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            code:this.state.code,
+                            redirect_uri:this.state.redirect_uri,
+                            client_secret:this.state.client_secret,
+                            client_id:this.state.client_id
+                        })
+                    };
+                    fetch('http://localhost:5000/api/linkedin', requestOptions)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                                this.setState({
+                                    access_token: data.access_token,
+                                    expires_in: data.expires_in,
+                                });
+
+                                localStorage.setItem("access_token_linkedin",data.access_token);
+                                localStorage.setItem("expires_in_linkedin",data.expires_in);
+                                window.history.pushState({}, document.title, "/view");
+
+                                setTimeout(() => {
+                                    this.fetchData().then(r => {
+
+                                    }).catch(err => {
+                                        console.log(err)
+                                    })
+                                }, 1000);
+
+                            }
+                        )
+                        .catch(error => {
+                            console.log(error);
+                        });
+            }
+            else {
+                console.log('state is incorrect/ code invalid');
+            }
+        }, 1000);
+
+    }
+
     render() {
         return (
             <div>
