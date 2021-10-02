@@ -77,21 +77,23 @@ class About extends Component {
                             </div>
                         </div>
                         {/*Senura*/}
-                        {/*TODO: Insert social media links*/}
                         <div className="column">
                             <div className="team-2">
                                 <div className="team-img">
                                     <img src={pp3} alt="Senura" />
                                         <div className="team-social">
-                                            {/*<a className="social-tw" target="_blank" rel="noreferrer" href="">*/}
-                                            {/*    <i className="fab fa-twitter"/></a>*/}
-                                            {/*<a className="social-fb" target="_blank" rel="noreferrer"*/}
-                                            {/*   href="https://www.facebook.com/Senura.Diwantha">*/}
-                                            {/*    <i className="fab fa-facebook-f"/></a>*/}
-                                            {/*<a className="social-li" target="_blank" rel="noreferrer" href="">*/}
-                                            {/*    <i className="fab fa-linkedin-in"/></a>*/}
-                                            {/*<a className="social-in" target="_blank" rel="noreferrer" href="">*/}
-                                            {/*    <i className="fab fa-instagram"/></a>*/}
+                                            <a className="social-tw" target="_blank" rel="noreferrer"
+                                                href="https://twitter.com/DiwanthaSenura">
+                                                 <i className="fab fa-twitter"/></a>
+                                            <a className="social-fb" target="_blank" rel="noreferrer"
+                                               href="https://www.facebook.com/Senura.Diwantha">
+                                                <i className="fab fa-facebook-f"/></a>
+                                            <a className="social-li" target="_blank" rel="noreferrer"
+                                                href="https://www.linkedin.com/in/senura-diwantha-381b3a193/">
+                                                <i className="fab fa-linkedin-in"/></a>
+                                            <a className="social-in" target="_blank" rel="noreferrer"
+                                                 href="https://www.instagram.com/_____senuuu__/">
+                                                <i className="fab fa-instagram"/></a>
                                             <a className="social-yt" target="_blank" rel="noreferrer"
                                                href="https://www.youtube.com/channel/UCez-R8JSjQl7LP-mJVsPk-w">
                                                 <i className="fab fa-youtube"/></a>
@@ -112,14 +114,18 @@ class About extends Component {
                                 <div className="team-img">
                                     <img src={pp4} alt="Hiruni" />
                                         <div className="team-social">
-                                            {/*<a className="social-tw" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-twitter"/></a>*/}
-                                            {/*<a className="social-fb" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-facebook-f"/></a>*/}
-                                            {/*<a className="social-li" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-linkedin-in"/></a>*/}
-                                            {/*<a className="social-in" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-instagram"/></a>*/}
+                                            <a className="social-tw" target="_blank" rel="noreferrer"
+                                              href="https://twitter.com/HMalaviarachchi">
+                                                  <i className="fab fa-twitter"/></a>
+                                            <a className="social-fb" target="_blank" rel="noreferrer"
+                                            href="https://www.facebook.com/hiru.wasana/">
+                                                <i className="fab fa-facebook-f"/></a>
+                                            <a className="social-li" target="_blank" rel="noreferrer"
+                                              href="https://www.linkedin.com/in/hiruni-malaviarachchi-346a4616b/">
+                                                  <i className="fab fa-linkedin-in"/></a>
+                                            <a className="social-in" target="_blank" rel="noreferrer"
+                                              href="https://www.instagram.com/__hiruuuunii___/">
+                                                  <i className="fab fa-instagram"/></a>
                                             <a className="social-yt" target="_blank" rel="noreferrer"
                                                href="https://www.youtube.com/channel/UCez-R8JSjQl7LP-mJVsPk-w">
                                                 <i className="fab fa-youtube"/></a>

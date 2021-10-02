@@ -31,6 +31,20 @@ class Home extends Component {
         }
     }
 
+    login = () => {
+        this.setState(
+            {
+                url: "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri="+this.state.redirectUrl
+                +"&prompt=consent&response_type=code&client_id="+this.state.client_id+"&scope="+this.state.scope
+                +"&access_type=offline",
+            });
+
+        setTimeout(() => {
+            window.location = this.state.url;
+        }, 1000);
+    }
+
+
     loginLinkedIn = () => {
         this.setState({
             url_linkedin: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.state.client_id_link
@@ -44,11 +58,23 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-               <div className="container">
-               <h1>OAuth 2.0 Application</h1>  
-               <hr />
-               <h4>View info in LinkedIn</h4>
+            <div className="wrapper">
+                <div className="container">
+                    <h1>OAuth 2.0 Application</h1>
+                    <hr />
+                    <h4>Upload files to Google Drive</h4>
+                    <div className="upload-container">
+                        <div className="border-container">
+                            <button className="btn btn-dark" onClick={this.login}>
+                                <img src={googleLogo} alt="google" width="30" height="30" />
+                                &nbsp; Sign into Google
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <hr />
+                    <h4>View info in LinkedIn</h4>
                     <div className="upload-container">
                         <div className="border-container">
                             <button className="btn btn-dark" onClick={this.loginLinkedIn}>
@@ -58,7 +84,9 @@ class Home extends Component {
 
                         </div>
                     </div>
-                </div> 
+
+
+                </div>
             </div>
         );
     }
