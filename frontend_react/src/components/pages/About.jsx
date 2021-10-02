@@ -117,10 +117,12 @@ class About extends Component {
                                             <a className="social-tw" target="_blank" rel="noreferrer"
                                               href="https://twitter.com/HMalaviarachchi">
                                                   <i className="fab fa-twitter"/></a>
-                                            {/*<a className="social-fb" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-facebook-f"/></a>*/}
-                                            {/*<a className="social-li" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-linkedin-in"/></a>*/}
+                                            <a className="social-fb" target="_blank" rel="noreferrer"
+                                            href="https://www.facebook.com/hiru.wasana/">
+                                                <i className="fab fa-facebook-f"/></a>
+                                            <a className="social-li" target="_blank" rel="noreferrer"
+                                              href="https://www.linkedin.com/in/hiruni-malaviarachchi-346a4616b/">
+                                                  <i className="fab fa-linkedin-in"/></a>
                                             {/*<a className="social-in" target="_blank" rel="noreferrer"*/}
                                             {/*   href=""><i className="fab fa-instagram"/></a>*/}
                                             <a className="social-yt" target="_blank" rel="noreferrer"
