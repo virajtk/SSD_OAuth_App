@@ -146,6 +146,14 @@ class UploadDrive extends Component {
             }
         }
 
+     clearImage = () => {
+            this.fileInput.value = "";
+            this.setState({
+                image: null,
+                selectedFile: null,
+            });
+        }
+
     render() {
         return (
             <div className="wrapper">
