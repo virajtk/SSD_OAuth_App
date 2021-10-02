@@ -11,6 +11,9 @@ router.route("/profile_picture")
 router.route("/email")
     .post(linkedinController.fetchEmail);
 
+router.route("/post")
+    .post(linkedinController.createPost);
+
 module.exports = {
     router
 }
