@@ -92,25 +92,42 @@ class UploadDrive extends Component {
     }
 
     async doUpload() {
-        const formData = new FormData();
-        formData.append('image', this.state.selectedFile, this.state.selectedFile.name);
-        formData.append('upload_file', true);
-        console.log("Bearer "+localStorage.getItem("access_token"));
+        // const formData = new FormData();
+        // formData.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        // formData.append('upload_file', true);
+        // console.log("Bearer "+localStorage.getItem("access_token"));
 
-        POST request using fetch with async/await
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                contentType: this.state.selectedFile.type,
-                Authorization: "Bearer " + localStorage.getItem("access_token")
+        // POST request using fetch with async/await
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers: {
+        //         contentType: this.state.selectedFile.type,
+        //         Authorization: "Bearer " + localStorage.getItem("access_token")
+        //     },
+        //     body: this.state.selectedFile,
+        // };
+        // await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', requestOptions)
+        //     .then( response => {
+        //         console.log(response.json());
+        //         console.log(response.data);
+        //     });
+
+
+        await axios.post('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', this.state.selectedFile, {
+            onUploadProgress: progressEvent => {
+                console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%' );
+                this.setState({
+                    progress: Math.round(progressEvent.loaded / progressEvent.total * 100)
+                });
             },
-            body: this.state.selectedFile,
-        };
-        await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', requestOptions)
+            headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}`}
+
+        })
             .then( response => {
-                console.log(response.json());
-                console.log(response.data);
-            });
+                console.log(response);
+            }).catch( err => {
+                console.log(err);
+            })
 
     }
 
