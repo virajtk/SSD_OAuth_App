@@ -146,14 +146,7 @@ class UploadDrive extends Component {
             }
         }
 
-<<<<<<< HEAD
-     clearImage = () => {
-            this.fileInput.value = "";
-            this.setState({
-                image: null,
-                selectedFile: null,
-            });
-=======
+
         fileUploadHandler = () => {
             if (this.state.selectedFile){
                 this.doUpload().then(() => {
@@ -190,7 +183,13 @@ class UploadDrive extends Component {
                 });
             }
     
->>>>>>> ae226adaada6b13222317c30263ec203dc45b12f
+        }
+        clearImage = () => {
+            this.fileInput.value = "";
+            this.setState({
+                image: null,
+                selectedFile: null,
+            });
         }
 
     render() {
