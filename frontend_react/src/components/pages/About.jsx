@@ -114,8 +114,9 @@ class About extends Component {
                                 <div className="team-img">
                                     <img src={pp4} alt="Hiruni" />
                                         <div className="team-social">
-                                            {/*<a className="social-tw" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-twitter"/></a>*/}
+                                            <a className="social-tw" target="_blank" rel="noreferrer"
+                                              href="https://twitter.com/HMalaviarachchi">
+                                                  <i className="fab fa-twitter"/></a>
                                             {/*<a className="social-fb" target="_blank" rel="noreferrer"*/}
                                             {/*   href=""><i className="fab fa-facebook-f"/></a>*/}
                                             {/*<a className="social-li" target="_blank" rel="noreferrer"*/}
