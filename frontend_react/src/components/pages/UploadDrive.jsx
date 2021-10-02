@@ -146,6 +146,36 @@ class UploadDrive extends Component {
             }
         }
 
+        fileUploadHandler = () => {
+            if (this.state.selectedFile){
+                this.doUpload().then(() => {
+                    toast.success('Image uploaded!', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                    this.clearImage();
+                    setTimeout(() => {
+                        this.setState({
+                            progress: 0,
+                        })
+                    }, 6000);
+    
+    
+    
+                }).catch(err => {
+                    console.log(err);
+                })
+            } else {
+               
+            }
+    
+        }
+
     render() {
         return (
             <div className="wrapper">
