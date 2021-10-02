@@ -23,6 +23,18 @@ class Viewlinkedin extends Component {
         }
     }
 
+    setUrlParamsCode = () => {
+        const param = new URLSearchParams(window.location.search);
+        const code = param.get('code');
+        const state = param.get('state');
+        console.log('code :'+ code);
+        console.log('state: '+state);
+        this.setState({
+            code: code,
+            state_l: state,
+        });
+    }
+
     render() {
         return (
             <div>
