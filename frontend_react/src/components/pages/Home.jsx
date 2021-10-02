@@ -45,7 +45,20 @@ class Home extends Component {
     render() {
         return (
             <div>
-                
+               <div className="container">
+               <h1>OAuth 2.0 Application</h1>  
+               <hr />
+               <h4>View info in LinkedIn</h4>
+                    <div className="upload-container">
+                        <div className="border-container">
+                            <button className="btn btn-dark" onClick={this.loginLinkedIn}>
+                                <img src={linkedinLogo} alt="linked" width="30" height="30" />
+                                &nbsp; Sign into LinkedIn
+                            </button>
+
+                        </div>
+                    </div>
+                </div> 
             </div>
         );
     }
