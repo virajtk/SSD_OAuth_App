@@ -91,6 +91,29 @@ class UploadDrive extends Component {
 
     }
 
+    async doUpload() {
+        const formData = new FormData();
+        formData.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        formData.append('upload_file', true);
+        console.log("Bearer "+localStorage.getItem("access_token"));
+
+        POST request using fetch with async/await
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                contentType: this.state.selectedFile.type,
+                Authorization: "Bearer " + localStorage.getItem("access_token")
+            },
+            body: this.state.selectedFile,
+        };
+        await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', requestOptions)
+            .then( response => {
+                console.log(response.json());
+                console.log(response.data);
+            });
+
+    }
+
     render() {
         return (
             <div className="wrapper">
