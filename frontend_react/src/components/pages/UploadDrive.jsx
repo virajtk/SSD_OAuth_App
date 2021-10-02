@@ -171,7 +171,15 @@ class UploadDrive extends Component {
                     console.log(err);
                 })
             } else {
-               
+                toast.error('Please select a image', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
     
         }
