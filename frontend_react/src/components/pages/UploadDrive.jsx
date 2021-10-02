@@ -131,6 +131,21 @@ class UploadDrive extends Component {
 
     }
 
+    fileSelectedHandler = (event) => {
+        console.log(event.target.files[0]);
+        this.setState({
+            selectedFile: event.target.files[0],
+        });
+              // set image
+              if (event.target.files && event.target.files[0]) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.setState({image: e.target.result});
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
     render() {
         return (
             <div className="wrapper">
