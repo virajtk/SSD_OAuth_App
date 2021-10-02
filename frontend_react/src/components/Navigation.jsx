@@ -11,19 +11,18 @@ class Navigation extends Component {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link" to="/">Home</Link>
-
                             </li>
+                            {/*<li className="nav-item">*/}
+                            {/*    <Link className="nav-link" to="/upload">Upload</Link>*/}
+                            {/*</li>*/}
+                            {/*<li className="nav-item">*/}
+                            {/*    <Link className="nav-link" to="/view">View</Link>*/}
+                            {/*</li>*/}
                             <li className="nav-item">
-                                <Link class="nav-link" to="/upload">Upload</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link class="nav-link" to="/view">View</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link class="nav-link" to="/about">About us</Link>
+                                <Link className="nav-link" to="/about">About us</Link>
                             </li>
                         </ul>
-                        <span className="navbar-text">
+                        <span className="navbar-text fw-bold">
                             by Team &lt;/BackSlash&gt;
                         </span>
                     </div>

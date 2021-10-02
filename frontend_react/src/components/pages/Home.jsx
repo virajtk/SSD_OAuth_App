@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import React, {Component} from 'react';
 import googleLogo from '../asserts/google-logo.png';
 import linkedinLogo from '../asserts/linkedin-logo.png';
@@ -44,7 +43,6 @@ class Home extends Component {
         }, 1000);
     }
 
-
     loginLinkedIn = () => {
         this.setState({
             url_linkedin: "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" + this.state.client_id_link
@@ -69,7 +67,6 @@ class Home extends Component {
                                 <img src={googleLogo} alt="google" width="30" height="30" />
                                 &nbsp; Sign into Google
                             </button>
-
                         </div>
                     </div>
 
@@ -88,6 +85,7 @@ class Home extends Component {
 
                 </div>
             </div>
+
         );
     }
 }

@@ -14,7 +14,6 @@ export const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 export const scopeEnv = process.env.REACT_APP_SCOPE;
 
 class UploadDrive extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -112,7 +111,6 @@ class UploadDrive extends Component {
         //         console.log(response.data);
         //     });
 
-
         await axios.post('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', this.state.selectedFile, {
             onUploadProgress: progressEvent => {
                 console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%' );
@@ -128,7 +126,6 @@ class UploadDrive extends Component {
             }).catch( err => {
                 console.log(err);
             })
-
     }
 
     fileSelectedHandler = (event) => {
@@ -136,43 +133,21 @@ class UploadDrive extends Component {
         this.setState({
             selectedFile: event.target.files[0],
         });
-              // set image
-              if (event.target.files && event.target.files[0]) {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    this.setState({image: e.target.result});
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
+
+        // set image
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                this.setState({image: e.target.result});
+            };
+            reader.readAsDataURL(event.target.files[0]);
         }
+    }
 
-
-        fileUploadHandler = () => {
-            if (this.state.selectedFile){
-                this.doUpload().then(() => {
-                    toast.success('Image uploaded!', {
-                        position: "top-right",
-                        autoClose: 3000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                    this.clearImage();
-                    setTimeout(() => {
-                        this.setState({
-                            progress: 0,
-                        })
-                    }, 6000);
-    
-    
-    
-                }).catch(err => {
-                    console.log(err);
-                })
-            } else {
-                toast.error('Please select a image', {
+    fileUploadHandler = () => {
+        if (this.state.selectedFile){
+            this.doUpload().then(() => {
+                toast.success('Image uploaded!', {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: true,
@@ -181,16 +156,39 @@ class UploadDrive extends Component {
                     draggable: true,
                     progress: undefined,
                 });
-            }
-    
-        }
-        clearImage = () => {
-            this.fileInput.value = "";
-            this.setState({
-                image: null,
-                selectedFile: null,
+                this.clearImage();
+                setTimeout(() => {
+                    this.setState({
+                        progress: 0,
+                    })
+                }, 6000);
+
+
+
+            }).catch(err => {
+                console.log(err);
+            })
+        } else {
+            toast.error('Please select a image', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
             });
         }
+
+    }
+
+    clearImage = () => {
+        this.fileInput.value = "";
+        this.setState({
+            image: null,
+            selectedFile: null,
+        });
+    }
 
     render() {
         return (
