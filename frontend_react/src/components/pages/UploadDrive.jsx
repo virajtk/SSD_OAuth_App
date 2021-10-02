@@ -35,6 +35,62 @@ class UploadDrive extends Component {
         }
     }
 
+    setUrlParamsCode = () => {
+        const param = new URLSearchParams(window.location.search);
+        const code = param.get('code');
+        console.log('code :'+ code);
+        this.setState({
+            urlParams: param,
+            code: code,
+        });
+    }
+
+    componentDidMount() {
+
+        this.setUrlParamsCode();
+        setTimeout(() => {
+            if (this.state.code){
+                // Simple POST request with a JSON body using fetch
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        code:this.state.code,
+                        redirect_uri:this.state.redirect_uri,
+                        client_secret:this.state.client_secret,
+                        client_id:this.state.client_id,
+                        scope:this.state.scope,
+                        grant_type:"authorization_code"
+                    })
+                };
+                fetch('https://www.googleapis.com/oauth2/v4/token', requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                            this.setState({
+                                access_token: data.access_token,
+                                refresh_token: data.refresh_token,
+                                expires_in: data.expires_in,
+                                scope: data.scope,
+                                token_type: data.token_type,
+                            });
+
+                            localStorage.setItem("access_token",data.access_token);
+                            localStorage.setItem("refresh_token",data.refresh_token);
+                            localStorage.setItem("expires_in",data.expires_in);
+                            localStorage.setItem("scope",data.scope);
+                            localStorage.setItem("token_type",data.expires_in);
+                            window.history.pushState({}, document.title, "/upload");
+
+                        }
+                    );
+            } else {
+                console.log('code invalid');
+            }
+
+        }, 1000);
+
+    }
+
     render() {
         return (
             <div className="wrapper">
