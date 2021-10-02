@@ -35,6 +35,16 @@ class UploadDrive extends Component {
         }
     }
 
+    setUrlParamsCode = () => {
+        const param = new URLSearchParams(window.location.search);
+        const code = param.get('code');
+        console.log('code :'+ code);
+        this.setState({
+            urlParams: param,
+            code: code,
+        });
+    }
+
     render() {
         return (
             <div className="wrapper">
