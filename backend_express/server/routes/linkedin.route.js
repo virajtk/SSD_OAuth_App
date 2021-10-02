@@ -8,6 +8,9 @@ router.route("/")
 router.route("/profile_picture")
     .post(linkedinController.fetchProfilePicture);
 
+router.route("/email")
+    .post(linkedinController.fetchEmail);
+
 module.exports = {
     router
 }
