@@ -123,8 +123,9 @@ class About extends Component {
                                             <a className="social-li" target="_blank" rel="noreferrer"
                                               href="https://www.linkedin.com/in/hiruni-malaviarachchi-346a4616b/">
                                                   <i className="fab fa-linkedin-in"/></a>
-                                            {/*<a className="social-in" target="_blank" rel="noreferrer"*/}
-                                            {/*   href=""><i className="fab fa-instagram"/></a>*/}
+                                            <a className="social-in" target="_blank" rel="noreferrer"
+                                              href="https://www.instagram.com/__hiruuuunii___/">
+                                                  <i className="fab fa-instagram"/></a>
                                             <a className="social-yt" target="_blank" rel="noreferrer"
                                                href="https://www.youtube.com/channel/UCez-R8JSjQl7LP-mJVsPk-w">
                                                 <i className="fab fa-youtube"/></a>
