@@ -24,6 +24,29 @@ const getAccessToken = async (req, res) => {
 
 }
 
+const fetchEmail = async (req, res) => {
+
+    const url = "https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))"
+    var clientServerOptions = {
+        uri: url,
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${req.body.access_token}`
+        }
+    }
+    request(clientServerOptions, function (error, response) {
+        if (response) {
+            // console.log(response.body);
+            res.status(200).json(JSON.parse(response.body));
+        }
+        else {
+            res.status(500).json({ errors: error });
+        }
+        return;
+    });
+
+}
+
 const fetchProfilePicture = async (req, res) => {
 
     const url = "https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))"
@@ -50,4 +73,5 @@ const fetchProfilePicture = async (req, res) => {
 module.exports = {
     getAccessToken,
     fetchProfilePicture,
+    fetchEmail,
 }
