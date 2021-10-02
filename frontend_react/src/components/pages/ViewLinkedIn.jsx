@@ -27,8 +27,8 @@ class Viewlinkedin extends Component {
         const param = new URLSearchParams(window.location.search);
         const code = param.get('code');
         const state = param.get('state');
-        console.log('code :'+ code);
-        console.log('state: '+state);
+        console.log('code :' + code);
+        console.log('state: ' + state);
         this.setState({
             code: code,
             state_l: state,
@@ -38,45 +38,45 @@ class Viewlinkedin extends Component {
     componentDidMount() {
         this.setUrlParamsCode();
         setTimeout(() => {
-            if (this.state.state_l === stateEnv && this.state.code){
+            if (this.state.state_l === stateEnv && this.state.code) {
                 // console.log('State is correct and good to go!');
-                    // Simple POST request with a JSON body using fetch
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            code:this.state.code,
-                            redirect_uri:this.state.redirect_uri,
-                            client_secret:this.state.client_secret,
-                            client_id:this.state.client_id
-                        })
-                    };
-                    fetch('http://localhost:5000/api/linkedin', requestOptions)
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                                this.setState({
-                                    access_token: data.access_token,
-                                    expires_in: data.expires_in,
-                                });
-
-                                localStorage.setItem("access_token_linkedin",data.access_token);
-                                localStorage.setItem("expires_in_linkedin",data.expires_in);
-                                window.history.pushState({}, document.title, "/view");
-
-                                setTimeout(() => {
-                                    this.fetchData().then(r => {
-
-                                    }).catch(err => {
-                                        console.log(err)
-                                    })
-                                }, 1000);
-
-                            }
-                        )
-                        .catch(error => {
-                            console.log(error);
+                // Simple POST request with a JSON body using fetch
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        code: this.state.code,
+                        redirect_uri: this.state.redirect_uri,
+                        client_secret: this.state.client_secret,
+                        client_id: this.state.client_id
+                    })
+                };
+                fetch('http://localhost:5000/api/linkedin', requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        this.setState({
+                            access_token: data.access_token,
+                            expires_in: data.expires_in,
                         });
+
+                        localStorage.setItem("access_token_linkedin", data.access_token);
+                        localStorage.setItem("expires_in_linkedin", data.expires_in);
+                        window.history.pushState({}, document.title, "/view");
+
+                        setTimeout(() => {
+                            this.fetchData().then(r => {
+
+                            }).catch(err => {
+                                console.log(err)
+                            })
+                        }, 1000);
+
+                    }
+                    )
+                    .catch(error => {
+                        console.log(error);
+                    });
             }
             else {
                 console.log('state is incorrect/ code invalid');
@@ -85,12 +85,27 @@ class Viewlinkedin extends Component {
 
     }
 
+    fetchData = async () => {
+        // POST request using fetch with async/await
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("access_token_linkedin")
+            }
+        };
+        await fetch('https://api.linkedin.com/v2/me?projection=(id,profilePicture(displayImage~digitalmediaAsset:playableStreams))', requestOptions)
+            .then(response => {
+                console.log(response.json());
+                console.log(response.data);
+            });
+    }
+
     render() {
         return (
             <div>
                 <div className="container">
                     <div className="section-title">
-                        <h2><i className="fab fa-linkedin-in"/>&nbsp; LinkedIn Profile</h2>
+                        <h2><i className="fab fa-linkedin-in" />&nbsp; LinkedIn Profile</h2>
                     </div>
                     <div className="row">
                         <div className="column">
@@ -108,7 +123,7 @@ class Viewlinkedin extends Component {
                                     <h4>example@example.com</h4>
                                     <div className="team-social">
                                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                        <a className="social-li"><i class="fab fa-linkedin-in"/></a>
+                                        <a className="social-li"><i class="fab fa-linkedin-in" /></a>
                                     </div>
                                 </div>
                             </div>
