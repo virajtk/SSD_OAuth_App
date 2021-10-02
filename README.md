@@ -2,9 +2,20 @@
 
 ### Getting Start
 
-### `yarn install`
+> navigate to backend directory using command prompt.
+
+- configure backend
+#### `npm install`
 Install node modules using package.json file.
-### `yarn start`
+#### `npm run development`
+Runs the backend in the development mode.\
+
+> navigate to frontend directory using command prompt
+
+- configure frontend
+#### `yarn install`
+Install node modules using package.json file.
+#### `yarn start`
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) 
 to view it in the browser.
