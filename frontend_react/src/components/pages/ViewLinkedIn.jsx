@@ -5,7 +5,7 @@ export const clientID = process.env.REACT_APP_CLIENT_ID_LINKEDIN;
 export const clientSecret = process.env.REACT_APP_CLIENT_SECRET_LINKEDIN;
 export const stateEnv = process.env.REACT_APP_STATE_LINKEDIN;
 
-class Viewlinkedin extends Component {
+class ViewLinkedIn extends Component {
 
     constructor(props) {
         super(props);
@@ -88,15 +88,15 @@ class Viewlinkedin extends Component {
     fetchData = async () => {
         // POST request using fetch with async/await
         const requestOptions = {
-            method: 'GET',
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("access_token_linkedin")
-            }
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                access_token: this.state.access_token
+            })
         };
-        await fetch('https://api.linkedin.com/v2/me?projection=(id,profilePicture(displayImage~digitalmediaAsset:playableStreams))', requestOptions)
+        await fetch('http://localhost:5000/api/linkedin/profile_picture', requestOptions)
             .then(response => {
                 console.log(response.json());
-                console.log(response.data);
             });
     }
 
@@ -123,7 +123,7 @@ class Viewlinkedin extends Component {
                                     <h4>example@example.com</h4>
                                     <div className="team-social">
                                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                        <a className="social-li"><i class="fab fa-linkedin-in" /></a>
+                                        <a className="social-li"><i className="fab fa-linkedin-in" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -143,4 +143,4 @@ class Viewlinkedin extends Component {
     }
 }
 
-export default Viewlinkedin;
+export default ViewLinkedIn;
