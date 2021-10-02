@@ -38,6 +38,40 @@ class Viewlinkedin extends Component {
     render() {
         return (
             <div>
+                <div className="container">
+                    <div className="section-title">
+                        <h2><i className="fab fa-linkedin-in"/>&nbsp; LinkedIn Profile</h2>
+                    </div>
+                    <div className="row">
+                        <div className="column">
+
+                        </div>
+                        <div className="column">
+                            <div className="team-1">
+                                <div className="team-img">
+                                    <img src="https://picsum.photos/200" alt="profile" />
+                                </div>
+                                <div className="team-content">
+                                    <h2>Mollie Ross</h2>
+                                    <h3>Art Director</h3>
+                                    <p>Some text goes here that describes about team member</p>
+                                    <h4>example@example.com</h4>
+                                    <div className="team-social">
+                                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                        <a className="social-li"><i class="fab fa-linkedin-in"/></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column">
+
+                        </div>
+                        <div className="column">
+
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         );
