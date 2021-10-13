@@ -24,6 +24,109 @@ const getAccessToken = async (req, res) => {
 
 }
 
+const fetchEmail = async (req, res) => {
+
+    const url = "https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))"
+    var clientServerOptions = {
+        uri: url,
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${req.body.access_token}`
+        }
+    }
+    request(clientServerOptions, function (error, response) {
+        if (response) {
+            // console.log(response.body);
+            res.status(200).json(JSON.parse(response.body));
+        }
+        else {
+            res.status(500).json({ errors: error });
+        }
+        return;
+    });
+
+}
+
+const fetchProfilePicture = async (req, res) => {
+
+    const url = "https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))"
+    var clientServerOptions = {
+        uri: url,
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${req.body.access_token}`
+        }
+    }
+    request(clientServerOptions, function (error, response) {
+        if (response) {
+            // console.log(response.body);
+            res.status(200).json(JSON.parse(response.body));
+        }
+        else {
+            res.status(500).json({ errors: error });
+        }
+        return;
+    });
+
+}
+
+const createPost = async (req, res) => {
+
+    const url = "https://api.linkedin.com/v2/ugcPosts";
+
+    var clientServerOptions = {
+        uri: url,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${req.body.access_token}`
+        },
+        body: JSON.stringify(
+            {
+                "author": "urn:li:person:"+req.body.user_id,
+                "lifecycleState": "PUBLISHED",
+                "specificContent": {
+                    "com.linkedin.ugc.ShareContent": {
+                        "shareCommentary": {
+                            "text": req.body.text
+                        },
+                        "shareMediaCategory": "ARTICLE",
+                        "media": [
+                            {
+                                "status": "READY",
+                                "description": {
+                                    "text": req.body.description
+                                },
+                                "originalUrl": req.body.url,
+                                "title": {
+                                    "text": req.body.title
+                                }
+                            }
+                        ]
+                    }
+                },
+                "visibility": {
+                    "com.linkedin.ugc.MemberNetworkVisibility": req.body.visibility
+                }
+            }
+        )
+    }
+    request(clientServerOptions, function (error, response) {
+        if (response) {
+            res.status(201).json(JSON.parse(response.body));
+        }
+        else {
+            res.status(500).json({ errors: error });
+        }
+        return;
+    });
+
+}
+
+
 module.exports = {
     getAccessToken,
+    fetchProfilePicture,
+    fetchEmail,
+    createPost,
 }
